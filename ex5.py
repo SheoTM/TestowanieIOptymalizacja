@@ -1,15 +1,8 @@
 import cv2
-import numpy as np
+import imutils
 
-blackscreen = np.zeros((300, 300, 3))
-(centerX, centerY) = (blackscreen.shape[1] // 2,
-                      blackscreen.shape[0] // 2)
-blue = (255, 0, 0)
-
-for size in range(0, 150, 20):
-    cv2.rectangle(blackscreen, (centerX - size, centerY - size),
-                  (centerX + size, centerY + size), blue, 1)
-
-cv2.imshow("Squares", blackscreen)
+image = cv2.imread('image.jpg')
+resized = imutils.resize(image, width=500)
+cv2.imshow('image', resized)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
