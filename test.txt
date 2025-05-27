@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-Line test
-=======
-Line test_2
->>>>>>> test_2
