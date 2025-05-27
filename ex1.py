@@ -1,7 +1,11 @@
 import cv2
-image = cv2.imread('image.jpg')
-(h, w) = image.shape[:2]
-cv2.imshow("Original", image)
-(b, g, r) = image[0, 0]
-print("Pixel at (0, 0) - Red: {}, Green: {}, Blue: {}".format(r, g, b))
+import numpy as np
+
+blackscreen = np.zeros((300, 300, 3))
+(centerX, centerY) = (blackscreen.shape[1] // 2,
+                      blackscreen.shape[0] // 2)
+blue = (255, 0, 0)
+cv2.line(blackscreen, (centerX, centerY), (300, 300), blue, 2)
+cv2.imshow("Blue line", blackscreen)
 cv2.waitKey(0)
+cv2.destroyAllWindows()

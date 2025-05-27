@@ -1,10 +1,13 @@
 import cv2
-image = cv2.imread('image.jpg')
-(h, w) = image.shape[:2]
-(cX, cY) = (w // 2, h // 2)
-(b, g, r) = image[cY, cX]
+import numpy as np
 
-print(f"Pixel at middle point: ({cX}, {cY}) - "
-      f"Red: {r}, Green: {g}, Blue: {b}")
-
+blackscreen = np.zeros((300, 300, 3))
+blue = (255, 0, 0)
+cv2.circle(blackscreen, (50, 50), 40, blue, -1)
+red = (0, 0, 255)
+(centerX, centerY) = (blackscreen.shape[1] // 2,
+                      blackscreen.shape[0] // 2)
+cv2.circle(blackscreen, (centerX, centerY), 60, red, -1)
+cv2.imshow("Circles", blackscreen)
 cv2.waitKey(0)
+cv2.destroyAllWindows()
