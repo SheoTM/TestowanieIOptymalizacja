@@ -1,11 +1,8 @@
 import cv2
 import numpy as np
 
-blackscreen = np.zeros((400, 400, 3))
-green = (0, 255, 0)
-cv2.rectangle(blackscreen, (0, 0), (100, 50), green, -1)
-red = (0, 0, 255)
-cv2.rectangle(blackscreen, (300, 350), (400, 400), red, 3)
-cv2.imshow("Rectangles", blackscreen)
+img = cv2.imread('image.jpg')
+M = np.float32([[1,0,-20],[0,1,-50]])
+shifted = cv2.warpAffine(img,M,(img.shape[1],img.shape[0]))
+cv2.imshow('shifted', shifted)
 cv2.waitKey(0)
-cv2.destroyAllWindows()

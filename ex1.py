@@ -1,11 +1,8 @@
 import cv2
 import numpy as np
 
-blackscreen = np.zeros((300, 300, 3))
-(centerX, centerY) = (blackscreen.shape[1] // 2,
-                      blackscreen.shape[0] // 2)
-blue = (255, 0, 0)
-cv2.line(blackscreen, (centerX, centerY), (300, 300), blue, 2)
-cv2.imshow("Blue line", blackscreen)
+img = cv2.imread('image.jpg')
+M = np.float32([[1,0,30],[0,1,40]])
+shifted = cv2.warpAffine(img,M,(img.shape[1],img.shape[0]))
+cv2.imshow('shifted', shifted)
 cv2.waitKey(0)
-cv2.destroyAllWindows()
